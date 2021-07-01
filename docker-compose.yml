@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  bankapp:
+    build: complete/.
+    ports:
+      - 8080:8080
+    volumes:
+      - ./complete:/io
+
+  maria_db:
+    container_name: mariadb
+    image: "mariadb:latest"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: bank
+      MYSQL_USER: bank
+      MYSQL_PASSWORD: banksecret
+      MYSQL_ROOT_PASSWORD: banksecret
